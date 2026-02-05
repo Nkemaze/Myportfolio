@@ -5,9 +5,7 @@ import TypeWriter from './TypeWriter';
 const HeroSection = () => {
   const roles = [
     'Software Engineer',
-    'JavaScript Developer',
-    'Frontend Specialist',
-    'React Expert',
+    'Web Developer'
   ];
 
   return (
@@ -44,7 +42,7 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <span className="text-foreground">I'm </span>
-            <span className="gradient-text text-glow">John Doe</span>
+            <span className="gradient-text text-glow">Nkemaze Bless</span>
           </motion.h1>
 
           <motion.div
@@ -89,22 +87,6 @@ const HeroSection = () => {
             >
               Get In Touch
             </motion.a>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-        >
-          <motion.div
-            className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          >
-            <motion.div className="w-1.5 h-3 bg-primary rounded-full mt-2" />
           </motion.div>
         </motion.div>
       </div>

@@ -36,7 +36,7 @@ const Navigation = () => {
           className="text-2xl font-bold gradient-text"
           whileHover={{ scale: 1.05 }}
         >
-          JD
+          NB
         </motion.a>
 
         {/* Desktop Navigation */}

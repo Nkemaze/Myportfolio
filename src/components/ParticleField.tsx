@@ -70,7 +70,6 @@ const ParticleField = () => {
       >
         <ambientLight intensity={0.5} />
         <Particles />
-        <FloatingGeometry />
       </Canvas>
     </div>
   );

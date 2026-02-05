@@ -1,10 +1,11 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import img from "../../public/me.png";
 
 const stats = [
-  { value: '5+', label: 'Years Experience' },
-  { value: '50+', label: 'Projects Completed' },
-  { value: '30+', label: 'Happy Clients' },
+  { value: '3+', label: 'Years Experience' },
+  { value: '20+', label: 'Projects Completed' },
+  { value: '2 0+', label: 'Happy Clients' },
   { value: '99%', label: 'Client Satisfaction' },
 ];
 
@@ -41,14 +42,8 @@ const AboutSection = () => {
               />
               
               {/* Center content */}
-              <div className="absolute inset-16 glass-card rounded-full flex items-center justify-center">
-                <motion.div
-                  className="text-6xl font-bold gradient-text"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  {'</>'}
-                </motion.div>
+              <div className="absolute inset-16 glass-card rounded-full flex items-center justify-center bg-gradient-text">
+                  <img src={img} alt="my image" style={{height:"250px", width:"200px"}}/>
               </div>
 
               {/* Floating elements */}
@@ -97,10 +92,9 @@ const AboutSection = () => {
             </h2>
 
             <p className="text-muted-foreground text-lg leading-relaxed mt-6">
-              I'm a passionate software engineer with over 5 years of experience
-              building modern web applications. I specialize in JavaScript ecosystems,
-              particularly React and Node.js, with a strong foundation in PHP for
-              backend development.
+              I'm a passionate software engineer with over 3 years of experience
+              building modern web applications. I specialize in many ecosystems,
+              such as React and Node.js, with a strong foundation in PHP(Laravel)
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed mt-4">
