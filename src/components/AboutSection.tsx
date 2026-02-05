@@ -42,15 +42,32 @@ const AboutSection = () => {
               />
               
               {/* Center content */}
-              <div className="absolute inset-16 glass-card rounded-full flex items-center justify-center bg-gradient-text">
-                  <img src={img} alt="my image" style={{height:"250px", width:"200px"}}/>
+              <div className="absolute inset-16 flex items-center justify-center">
+                <div className="relative h-80 w-80 overflow-hidden rounded-full border border-white/20 bg-gradient-to-br from-white/10 via-white/0 to-white/10 shadow-2xl">
+                  <img
+                    src={img}
+                    alt="my image"
+                    className="h-full w-full object-cover object-[50%_-5%]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 border border-white/10 mix-blend-overlay" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-white/10" />
+                </div>
               </div>
 
               {/* Floating elements */}
-              {['JS', 'React', 'PHP', 'CSS'].map((tech, index) => (
+              {[
+                {
+                  name: 'React',
+                  icon: 'https://cdn.simpleicons.org/react/61DAFB',
+                },
+                {
+                  name: 'PHP',
+                  icon: 'https://cdn.simpleicons.org/php/777BB4',
+                }
+              ].map((tech, index) => (
                 <motion.div
-                  key={tech}
-                  className="absolute glass-card px-3 py-1.5 rounded-full text-sm font-mono text-primary"
+                  key={tech.name}
+                  className="absolute glass-card px-3 py-1.5 rounded-full text-sm font-mono text-primary flex items-center gap-2"
                   style={{
                     top: `${20 + Math.sin(index * 1.5) * 30}%`,
                     left: `${index % 2 === 0 ? -10 : 80}%`,
@@ -65,7 +82,13 @@ const AboutSection = () => {
                     delay: index * 0.5,
                   }}
                 >
-                  {tech}
+                  <img
+                    src={tech.icon}
+                    alt={`${tech.name} icon`}
+                    className="h-4 w-4"
+                    loading="lazy"
+                  />
+                  <span>{tech.name}</span>
                 </motion.div>
               ))}
             </div>

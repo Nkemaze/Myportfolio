@@ -1,5 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { Mail, MapPin, Briefcase } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -30,6 +32,7 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -62,13 +65,36 @@ const ContactSection = () => {
     if (!validateForm()) return;
     
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Missing EmailJS environment variables.');
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        { publicKey }
+      );
+
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (err) {
+      setSubmitError('Something went wrong. Please try again or email me directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -134,9 +160,9 @@ const ContactSection = () => {
 
             <div className="space-y-4">
               {[
-                { icon: '📧', label: 'Email', value: 'hello@johndoe.dev' },
-                { icon: '📍', label: 'Location', value: 'San Francisco, CA' },
-                { icon: '💼', label: 'Status', value: 'Available for hire' },
+                { icon: Mail, label: 'Email', value: 'nkemazebless58@gmail.com' },
+                { icon: MapPin, label: 'Location', value: 'Yaounde, Cameroon' },
+                { icon: Briefcase, label: 'Status', value: 'Software Developer' },
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -146,7 +172,9 @@ const ContactSection = () => {
                   transition={{ delay: 0.3 + index * 0.1 }}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <span className="text-2xl">{item.icon}</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                    <item.icon className="h-5 w-5 text-primary" />
+                  </span>
                   <div>
                     <p className="text-sm text-muted-foreground">{item.label}</p>
                     <p className="font-medium">{item.value}</p>
@@ -157,17 +185,26 @@ const ContactSection = () => {
 
             {/* Social Links */}
             <div className="flex gap-4">
-              {['GitHub', 'LinkedIn', 'Twitter'].map((social, index) => (
+              {[
+                { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github/FFFFFF', href: 'https://github.com/Nkemaze' },
+                { name: 'Twitter', icon: 'https://cdn.simpleicons.org/x/FFFFFF', href: '#' },
+                { name: 'Facebook', icon: 'https://cdn.simpleicons.org/facebook/0866FF', href: '#' },
+              ].map((social, index) => (
                 <motion.a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.href}
                   className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-primary/10 transition-colors"
                   whileHover={{ scale: 1.1, y: -2 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.5 + index * 0.1 }}
                 >
-                  <span className="text-sm font-medium">{social[0]}</span>
+                  <img
+                    src={social.icon}
+                    alt={`${social.name} icon`}
+                    className="h-5 w-5"
+                    loading="lazy"
+                  />
                 </motion.a>
               ))}
             </div>
@@ -317,6 +354,15 @@ const ContactSection = () => {
                     'Send Message'
                   )}
                 </motion.button>
+                {submitError && (
+                  <motion.p
+                    className="text-destructive text-sm mt-2 text-center"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {submitError}
+                  </motion.p>
+                )}
               </>
             )}
           </motion.form>

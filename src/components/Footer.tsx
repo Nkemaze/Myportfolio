@@ -12,7 +12,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="text-2xl font-bold gradient-text">JD</span>
+            <span className="text-2xl font-bold gradient-text">NB</span>
           </motion.div>
 
           <motion.p

@@ -1,108 +1,68 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 const skills = [
-  { name: 'JavaScript', level: 95, icon: '⚡', color: 'from-yellow-400 to-yellow-600' },
-  { name: 'React', level: 92, icon: '⚛️', color: 'from-cyan-400 to-blue-500' },
-  { name: 'TypeScript', level: 88, icon: '📘', color: 'from-blue-400 to-blue-600' },
-  { name: 'PHP', level: 85, icon: '🐘', color: 'from-purple-400 to-purple-600' },
-  { name: 'HTML/CSS', level: 95, icon: '🎨', color: 'from-orange-400 to-red-500' },
-  { name: 'Node.js', level: 82, icon: '🟢', color: 'from-green-400 to-green-600' },
+  { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
+  { name: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
+  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'PHP', icon: 'https://cdn.simpleicons.org/php/777BB4' },
+  { name: 'bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg' },
+  { name: 'HTML', icon: 'https://cdn.simpleicons.org/html5/E34F26' },
+  { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+  { name: 'Laravel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
+  { name: 'Tailwind', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+  { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
 ];
 
 const techStack = [
-  { name: 'Git', icon: '📦' },
-  { name: 'Docker', icon: '🐳' },
-  { name: 'MongoDB', icon: '🍃' },
-  { name: 'PostgreSQL', icon: '🐘' },
-  { name: 'AWS', icon: '☁️' },
-  { name: 'Tailwind', icon: '💨' },
-  { name: 'Next.js', icon: '▲' },
-  { name: 'GraphQL', icon: '◈' },
+  { name: 'Git', icon: 'https://cdn.simpleicons.org/git/F05032' },
+  { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
+  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
+  { name: 'Mysql', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg' },
 ];
 
-interface SkillCardProps {
-  skill: typeof skills[0];
-  index: number;
+const SkillPill = ({
+  name,
+  icon,
+  delay,
+  isInView,
+}: {
+  name: string;
+  icon: string;
+  delay: number;
   isInView: boolean;
-}
-
-const SkillCard = ({ skill, index, isInView }: SkillCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <motion.div
-      className="skill-card"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">{skill.icon}</span>
-          <span className="font-semibold text-lg">{skill.name}</span>
-        </div>
-        <span className="text-primary font-mono">{skill.level}%</span>
-      </div>
-      
-      {/* Circular progress */}
-      <div className="relative w-24 h-24 mx-auto my-4">
-        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-          {/* Background circle */}
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="8"
-            className="text-muted"
-          />
-          {/* Progress circle */}
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="40"
-            fill="none"
-            strokeWidth="8"
-            strokeLinecap="round"
-            className="text-primary"
-            style={{
-              strokeDasharray: 251.2,
-            }}
-            initial={{ strokeDashoffset: 251.2 }}
-            animate={isInView ? { strokeDashoffset: 251.2 - (251.2 * skill.level) / 100 } : {}}
-            transition={{ duration: 1.5, delay: index * 0.1, ease: 'easeOut' }}
-          />
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.span
-            className="text-2xl font-bold"
-            animate={isHovered ? { scale: 1.2 } : { scale: 1 }}
-          >
-            {skill.icon}
-          </motion.span>
-        </div>
-      </div>
-
-      {/* Linear progress bar */}
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
-        <motion.div
-          className={`h-full bg-gradient-to-r ${skill.color}`}
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${skill.level}%` } : {}}
-          transition={{ duration: 1.5, delay: index * 0.1, ease: 'easeOut' }}
-        />
-      </div>
-    </motion.div>
-  );
-};
+}) => (
+  <motion.div
+    className="glass-card px-6 py-3 rounded-full flex items-center gap-3 cursor-pointer border border-white/10 bg-white/5"
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+    transition={{ delay, duration: 0.4 }}
+    whileHover={{ 
+      scale: 1.06, 
+      boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' 
+    }}
+  >
+    <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-transparent">
+      <img
+        src={icon}
+        alt={`${name} icon`}
+        className="h-4 w-4"
+        loading="lazy"
+      />
+    </div>
+    <span className="font-medium">{name}</span>
+  </motion.div>
+);
 
 const SkillsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const rows = Array.from({ length: 3 }, () => [] as typeof skills);
+  skills.forEach((skill, index) => {
+    rows[index % 3].push(skill);
+  });
 
   return (
     <section id="skills" className="py-32 relative" ref={ref}>
@@ -127,16 +87,35 @@ const SkillsSection = () => {
           </p>
         </motion.div>
 
-        {/* Main Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {skills.map((skill, index) => (
-            <SkillCard
-              key={skill.name}
-              skill={skill}
-              index={index}
-              isInView={isInView}
-            />
-          ))}
+        {/* Skills Marquees */}
+        <div className="relative mb-16 space-y-6 overflow-hidden pb-10">
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-background to-transparent" />
+
+          {rows.map((row, rowIndex) => {
+            const marqueeRow = [...row, ...row, ...row];
+            const isReverse = rowIndex % 2 === 1;
+            return (
+              <motion.div
+                key={`row-${rowIndex}`}
+                className="flex gap-6"
+                initial={{ x: '0%' }}
+                animate={isInView ? { x: isReverse ? ['0%', '33.333%'] : ['0%', '-33.333%'] } : {}}
+                transition={{ duration: 22, ease: 'linear', repeat: Infinity }}
+              >
+            {marqueeRow.map((skill, index) => (
+              <div key={`${skill.name}-${rowIndex}-${index}`} className="min-w-[220px]">
+                <SkillPill
+                  name={skill.name}
+                  icon={skill.icon}
+                  delay={0.1 + (index % row.length) * 0.05}
+                  isInView={isInView}
+                />
+              </div>
+            ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Tech Stack */}
@@ -153,7 +132,7 @@ const SkillsSection = () => {
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className="glass-card px-6 py-3 rounded-full flex items-center gap-2 cursor-pointer"
+                className="glass-card px-6 py-3 rounded-full flex items-center gap-3 cursor-pointer border border-white/10 bg-white/5"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.8 + index * 0.05 }}
@@ -162,7 +141,14 @@ const SkillsSection = () => {
                   boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' 
                 }}
               >
-                <span>{tech.icon}</span>
+                <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-transparent">
+                  <img
+                    src={tech.icon}
+                    alt={`${tech.name} icon`}
+                    className="h-4 w-4"
+                    loading="lazy"
+                  />
+                </div>
                 <span className="font-medium">{tech.name}</span>
               </motion.div>
             ))}
