@@ -22,7 +22,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            © {currentYear} John Doe. Built with passion and
+            © {currentYear} Nkemaze Bless. Built with passion and
             <span className="text-primary"> {'<code />'}</span>
           </motion.p>
 
