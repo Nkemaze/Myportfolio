@@ -51,7 +51,7 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <TypeWriter words={roles} />
+            <TypeWriter words={roles}/>
           </motion.div>
 
           <motion.p

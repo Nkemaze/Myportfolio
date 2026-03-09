@@ -79,7 +79,7 @@ const SkillsSection = () => {
             My Skills
           </span>
           <h2 className="section-title mt-4">
-            Technical <span className="gradient-text">Expertise</span>
+            Technical <span className="text-primary">Expertise</span>
           </h2>
           <p className="section-subtitle mx-auto mt-4">
             A comprehensive toolkit of modern technologies for building

@@ -110,7 +110,7 @@ const AboutSection = () => {
             </motion.span>
             
             <h2 className="section-title mt-4">
-              Turning <span className="gradient-text">Ideas</span> Into
+              Turning <span className="text-primary">Ideas</span> Into
               <br />Digital Reality
             </h2>
 

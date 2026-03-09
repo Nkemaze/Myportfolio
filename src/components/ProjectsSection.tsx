@@ -207,7 +207,7 @@ const ProjectsSection = () => {
             My Work
           </span>
           <h2 className="section-title mt-4">
-            Featured <span className="gradient-text">Projects</span>
+            Featured <span className="text-primary">Projects</span>
           </h2>
           <p className="section-subtitle mx-auto mt-4">
             A selection of projects that showcase my skills and passion for

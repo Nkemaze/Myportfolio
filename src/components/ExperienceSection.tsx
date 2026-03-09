@@ -4,35 +4,35 @@ import { useRef } from 'react';
 const experiences = [
   {
     id: 1,
-    role: 'Senior Frontend Developer',
-    company: 'TechCorp Inc.',
-    period: '2022 - Present',
-    description: 'Leading the frontend team in building scalable React applications. Implemented micro-frontend architecture and improved performance by 40%.',
-    tech: ['React', 'TypeScript', 'GraphQL', 'AWS'],
+    role: 'Software Developer',
+    company: 'Digimark Consulting.',
+    period: 'Sep 2025 - Present',
+    description: 'Building tech solutions for clients, focusing on scalable frontend and backend architecture. Collaborating with cross-functional teams to deliver high-quality software products.',
+    tech: ['React', 'JavaScript', 'php', 'Laravel', 'MySQL'],
   },
   {
     id: 2,
-    role: 'Full Stack Developer',
-    company: 'Digital Solutions Ltd.',
-    period: '2020 - 2022',
-    description: 'Developed and maintained multiple client projects using modern JavaScript frameworks. Built RESTful APIs and integrated third-party services.',
-    tech: ['React', 'Node.js', 'PHP', 'MySQL'],
+    role: "Bachelor's Degree in Software Engineering",
+    company: 'Yaounde International Business School',
+    period: '2025 - Present',
+    description: 'Pursuing a Bachelor’s degree in Software Engineering, gaining a strong foundation in software development principles, algorithms, and data structures. Engaging in projects that apply theoretical knowledge to real-world applications.',
+    tech: ['YIBS'],
   },
   {
     id: 3,
-    role: 'Frontend Developer',
-    company: 'StartUp Hub',
-    period: '2019 - 2020',
-    description: 'Created responsive web applications and implemented UI/UX designs. Collaborated with design team to improve user experience.',
-    tech: ['JavaScript', 'Vue.js', 'SCSS', 'Firebase'],
+    role: 'Software Engineer Intern',
+    company: 'Digimark Consulting.',
+    period: 'June 2024 - Sep 2024',
+    description: 'Contributed to the development of web applications, assisting in both frontend and backend tasks. Gained hands-on experience with React, Node.js, and database management while working on client projects.',
+    tech: ['PHP', 'HTML', 'CSS', 'JavaScript'],
   },
   {
     id: 4,
-    role: 'Junior Developer',
-    company: 'Web Agency Pro',
-    period: '2018 - 2019',
-    description: 'Started professional career building websites and web applications. Learned modern development practices and agile methodologies.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+    role: 'HND in Software Engineering',
+    company: 'Yaounde International Business School',
+    period: '2023 - 2025',
+    description: 'Completed Higher National Diploma in Software Engineering, focusing on practical software development skills and industry-relevant technologies. Participated in internships and projects that provided hands-on experience in full-stack development.',
+    tech: ['YIBS'],
   },
 ];
 
@@ -115,7 +115,7 @@ const ExperienceSection = () => {
             Experience
           </span>
           <h2 className="section-title mt-4">
-            Professional <span className="gradient-text">Journey</span>
+            Professional <span className="text-primary">Journey</span>
           </h2>
           <p className="section-subtitle mx-auto mt-4">
             My career path and the experiences that shaped me as a developer.

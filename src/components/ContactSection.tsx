@@ -135,7 +135,7 @@ const ContactSection = () => {
             Get In Touch
           </span>
           <h2 className="section-title mt-4">
-            Let's <span className="gradient-text">Connect</span>
+            Let's <span className="text-primary">Connect</span>
           </h2>
           <p className="section-subtitle mx-auto mt-4">
             Have a project in mind? Let's discuss how we can work together.

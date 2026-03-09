@@ -46,7 +46,7 @@ const TypeWriter = ({
 
   return (
     <span className="typing-cursor">
-      <span className="gradient-text">{currentText}</span>
+      <span className="text-primary">{currentText}</span>
     </span>
   );
 };
