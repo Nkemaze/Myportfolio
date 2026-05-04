@@ -35,7 +35,7 @@ const SkillPill = ({
   isInView: boolean;
 }) => (
   <motion.div
-    className="glass-card px-6 py-3 rounded-full flex items-center gap-3 cursor-pointer border border-white/10 bg-white/5"
+    className="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-full flex items-center gap-2 sm:gap-3 cursor-pointer border border-white/10 bg-white/5"
     initial={{ opacity: 0, scale: 0.95 }}
     animate={isInView ? { opacity: 1, scale: 1 } : {}}
     transition={{ delay, duration: 0.4 }}
@@ -44,7 +44,7 @@ const SkillPill = ({
       boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' 
     }}
   >
-    <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-transparent">
+    <div className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full border border-white/10 bg-transparent">
       <img
         src={icon}
         alt={`${name} icon`}
@@ -65,7 +65,7 @@ const SkillsSection = () => {
   });
 
   return (
-    <section id="skills" className="py-32 relative" ref={ref}>
+    <section id="skills" className="py-20 md:py-32 relative" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
 
@@ -104,7 +104,7 @@ const SkillsSection = () => {
                 transition={{ duration: 22, ease: 'linear', repeat: Infinity }}
               >
             {marqueeRow.map((skill, index) => (
-              <div key={`${skill.name}-${rowIndex}-${index}`} className="min-w-[220px]">
+              <div key={`${skill.name}-${rowIndex}-${index}`} className="min-w-[160px] sm:min-w-[220px]">
                 <SkillPill
                   name={skill.name}
                   icon={skill.icon}

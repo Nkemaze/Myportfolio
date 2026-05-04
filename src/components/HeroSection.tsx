@@ -20,14 +20,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 container mx-auto px-6 py-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.p
-            className="text-primary font-mono text-sm md:text-base mb-4 tracking-wider"
+            className="text-primary font-mono text-xs sm:text-sm md:text-base mb-4 tracking-wider"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -36,17 +36,17 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <span className="text-foreground">I'm </span>
-            <span className="gradient-text text-glow">Nkemaze Bless</span>
+            <span className="gradient-text text-glow block sm:inline">Nkemaze Bless</span>
           </motion.h1>
 
           <motion.div
-            className="text-xl md:text-3xl lg:text-4xl font-medium text-muted-foreground mb-8 h-12"
+            className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-medium text-muted-foreground mb-8 h-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -55,7 +55,7 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.p
-            className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12"
+            className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-12 px-4 sm:px-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
