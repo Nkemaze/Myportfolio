@@ -35,7 +35,7 @@ const SkillPill = ({
   isInView: boolean;
 }) => (
   <motion.div
-    className="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-full flex items-center gap-2 sm:gap-3 cursor-pointer border border-white/10 bg-white/5"
+    className="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-full flex items-center gap-2 sm:gap-3 cursor-pointer border border-border bg-white/5"
     initial={{ opacity: 0, scale: 0.95 }}
     animate={isInView ? { opacity: 1, scale: 1 } : {}}
     transition={{ delay, duration: 0.4 }}
@@ -44,7 +44,7 @@ const SkillPill = ({
       boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' 
     }}
   >
-    <div className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full border border-white/10 bg-transparent">
+    <div className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full border border-border bg-transparent">
       <img
         src={icon}
         alt={`${name} icon`}
@@ -132,7 +132,7 @@ const SkillsSection = () => {
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className="glass-card px-6 py-3 rounded-full flex items-center gap-3 cursor-pointer border border-white/10 bg-white/5"
+                className="glass-card px-6 py-3 rounded-full flex items-center gap-3 cursor-pointer border border-border bg-white/5"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.8 + index * 0.05 }}
@@ -141,7 +141,7 @@ const SkillsSection = () => {
                   boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' 
                 }}
               >
-                <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-transparent">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full border border-border bg-transparent">
                   <img
                     src={tech.icon}
                     alt={`${tech.name} icon`}
