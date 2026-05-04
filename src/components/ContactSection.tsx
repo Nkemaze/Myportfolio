@@ -120,7 +120,7 @@ const ContactSection = () => {
   `;
 
   return (
-    <section id="contact" className="py-32 relative" ref={ref}>
+    <section id="contact" className="py-20 md:py-32 relative" ref={ref}>
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
@@ -145,7 +145,7 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
           <motion.div
-            className="space-y-8"
+            className="space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2 }}
@@ -184,7 +184,7 @@ const ContactSection = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center lg:justify-start">
               {[
                 { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github/FFFFFF', href: 'https://github.com/Nkemaze' },
                 { name: 'Twitter', icon: 'https://cdn.simpleicons.org/x/FFFFFF', href: '#' },
@@ -213,7 +213,7 @@ const ContactSection = () => {
           {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            className="glass-card p-8 rounded-2xl space-y-6"
+            className="glass-card p-6 sm:p-8 rounded-2xl space-y-6"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.4 }}

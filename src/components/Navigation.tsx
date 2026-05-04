@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { Sun, Moon } from 'lucide-react';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -54,13 +56,16 @@ const Navigation = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
+          <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <button
+            className="w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
           <motion.span
             className="w-6 h-0.5 bg-foreground"
             animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
@@ -69,11 +74,12 @@ const Navigation = () => {
             className="w-6 h-0.5 bg-foreground"
             animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
           />
-          <motion.span
-            className="w-6 h-0.5 bg-foreground"
-            animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-          />
-        </button>
+            <motion.span
+              className="w-6 h-0.5 bg-foreground"
+              animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -101,6 +107,30 @@ const Navigation = () => {
         )}
       </AnimatePresence>
     </motion.nav>
+  );
+};
+
+const ThemeToggle = () => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return <div className="w-10 h-10" />;
+
+  return (
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      className="w-10 h-10 flex items-center justify-center rounded-full glass-card border border-white/10"
+    >
+      {theme === 'dark' ? (
+        <Sun className="w-5 h-5 text-primary" />
+      ) : (
+        <Moon className="w-5 h-5 text-primary" />
+      )}
+    </motion.button>
   );
 };
 

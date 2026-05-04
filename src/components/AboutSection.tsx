@@ -14,21 +14,21 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-20 md:py-32 relative overflow-hidden" ref={ref}>
       {/* Background decoration */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/2" />
 
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Image/Visual */}
           <motion.div
-            className="relative"
+            className="relative order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative aspect-square max-w-md mx-auto">
+            <div className="relative aspect-square max-w-sm sm:max-w-md mx-auto scale-90 sm:scale-100">
               {/* Decorative rings */}
               <motion.div
                 className="absolute inset-0 border-2 border-primary/20 rounded-full"
@@ -42,8 +42,8 @@ const AboutSection = () => {
               />
               
               {/* Center content */}
-              <div className="absolute inset-16 flex items-center justify-center">
-                <div className="relative h-80 w-80 overflow-hidden rounded-full border border-white/20 bg-gradient-to-br from-white/10 via-white/0 to-white/10 shadow-2xl">
+              <div className="absolute inset-10 sm:inset-16 flex items-center justify-center">
+                <div className="relative h-64 w-64 sm:h-80 sm:w-80 overflow-hidden rounded-full border border-white/20 bg-gradient-to-br from-white/10 via-white/0 to-white/10 shadow-2xl">
                   <img
                     src={img}
                     alt="my image"
@@ -96,6 +96,7 @@ const AboutSection = () => {
 
           {/* Right side - Content */}
           <motion.div
+            className="order-1 lg:order-2 text-center lg:text-left"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -109,18 +110,18 @@ const AboutSection = () => {
               About Me
             </motion.span>
             
-            <h2 className="section-title mt-4">
+            <h2 className="section-title mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               Turning <span className="text-primary">Ideas</span> Into
-              <br />Digital Reality
+              <br className="hidden sm:block" /> Digital Reality
             </h2>
 
-            <p className="text-muted-foreground text-lg leading-relaxed mt-6">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mt-6">
               I'm a passionate software engineer with over 3 years of experience
               building modern web applications. I specialize in many ecosystems,
               such as React and Node.js, with a strong foundation in PHP(Laravel)
             </p>
 
-            <p className="text-muted-foreground text-lg leading-relaxed mt-4">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mt-4">
               My approach combines clean, maintainable code with creative problem-solving
               to deliver exceptional user experiences. I believe in continuous learning
               and staying at the forefront of web technologies.
